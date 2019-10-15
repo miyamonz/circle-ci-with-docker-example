@@ -10,6 +10,7 @@ jobs:
           name: docker-compose up
           command: docker-compose up -d
       - run: docker-compose ps
+      - run: sleep 10
       - run: docker-compose exec app php artisan key:generate --env=testing
       - run: cat server/.env.testing
       - run:
