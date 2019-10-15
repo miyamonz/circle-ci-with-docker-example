@@ -13,9 +13,10 @@ jobs:
       - run:
           name: docker-compose up
           command: docker-compose up -d
+      - run: docker-compose exec app php artisan key:generate --env=testing
       - run:
           name: migrate
-          command: docker-compose exec app php artisan migrate --force --env=testing
+          command: docker-compose exec app php artisan migrate --env=testing
       - run:
           name: test
           command: docker-compose exec app vendor/bin/phpunit
