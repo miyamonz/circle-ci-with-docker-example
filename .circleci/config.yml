@@ -7,14 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: docker-compose up
-        commnad: docker-compose up -d
+          name: docker-compose up
+          command: docker-compose up -d
       - run:
-        name: migrate
-        commnad: docker-compose exec app php artisan migrate
+          name: migrate
+          command: docker-compose exec app php artisan migrate
       - run:
-        name: test
-        commnad: docker-compose exec app vendor/bin/phpunit
+          name: test
+          command: docker-compose exec app vendor/bin/phpunit
       - run:
-        name: docker-compose down
-        commnad: docker-compose down
+          name: docker-compose down
+          command: docker-compose down
