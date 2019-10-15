@@ -12,7 +12,7 @@ jobs:
       - run: docker-compose ps
       - run: |
           until docker-compose exec db mysqladmin ping -u user -ppassword ; do
-            sleep 1
+            sleep 5
           done
       - run: docker-compose exec app php artisan key:generate --env=testing
       - run:
