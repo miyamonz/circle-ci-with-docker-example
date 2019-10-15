@@ -4,6 +4,10 @@ jobs:
   build:
     machine:
       image: circleci/classic:edge
+      environment:
+        MYSQL_DATABASE: app
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
     steps:
       - checkout
       - run:
