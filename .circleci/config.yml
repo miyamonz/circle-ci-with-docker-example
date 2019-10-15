@@ -11,8 +11,8 @@ jobs:
           command: docker-compose up -d
       - run: docker-compose ps
       - run: |
-          docker-compose exec db bash -c "until mysqladmin ping -u user -ppassword ; do
-            sleep 10
+          docker-compose exec db bash -c "until (mysqladmin ping -u user -ppassword) ; do
+            sleep 1
           done"
       - run: docker-compose exec app php artisan key:generate --env=testing
       - run:
