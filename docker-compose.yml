@@ -13,6 +13,8 @@ services:
     volumes:
       - ./server:/var/www
       - vendor:/var/www/vendor
+    depends_on:
+      - db
   db:
     image: mysql:8
     environment:
