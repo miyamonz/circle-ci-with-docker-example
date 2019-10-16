@@ -10,7 +10,7 @@ jobs:
           name: docker-compose up
           command: docker-compose up -d
       - run: docker-compose ps
-      - run: sleep 7
+      - run: sleep 10
       - run: docker-compose exec app php artisan key:generate --env=testing
       - run:
           name: migrate
