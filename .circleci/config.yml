@@ -11,10 +11,12 @@ jobs:
           command: docker-compose up -d
       - run: docker-compose ps
       - run: |
-          docker-compose exec db bash -c "until (mysqladmin ping -u user -ppassword) ; do
+          docker-compose exec db bash -c "
+          until (mysqladmin ping -u user -ppassword --protocol tcp) ; do
             echo .
             sleep 2
-          done"
+          done
+          "
       - run: docker-compose exec app php artisan key:generate --env=testing
       - run:
           name: migrate
